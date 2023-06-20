@@ -57,6 +57,86 @@
 			"$4:",
 		]
 	},
+	"Define Struct": {
+		"prefix": ["define-struct", "struct"],
+		"description": "Insert a definition for a struct.",
+		"body": [
+			"struc ${1:mystruct}",
+			"\t$0",
+			"endstruc"
+		]
+	},
+	"Define Struct Field": {
+		"prefix": ["define-field", "field"],
+		"description": "Insert the definition of a field for a struct",
+		"body": [
+			".${1:my_field}:\t${2|resb,resw,resd|}\t${3:1}",
+			"$0"
+		]
+	},
+	"Instantiate Struct": {
+		"prefix": ["instantiate-struct","init-struct"],
+		"description": "Instantiate an instance of a struct.",
+		"body": [
+			"${1:struct_instance}:",
+			"\tistruc ${2:mystruct}",
+			"\t\t$0",
+			"\tiend",
+		]
+	},
+	"Instantiate Struct Field": {
+		"prefix": ["instantiate-field", "init-field"],
+		"description": "Insert the value of a field for an instance of a struct.",
+		"body": [
+			"at ${1:mystruct}.${2:my_field},\t${3|db,dw,dd|}\t${4:?}",
+			"$0"
+		]
+	},
+	"Insert Section": {
+		"prefix": ["section"],
+		"description": "Insert a section header.",
+		"body": [
+			"section ${1|.data,.text,.bss,.rodata|}",
+			"\t$0"
+		]
+	},
+	"Array length": {
+		"prefix": ["ln"],
+		"description": "Define the length of an array.",
+		"body": [
+			"${1:arr_len} equ ($ - ${2:arr}) / ${3:1}",
+			"$0"
+		]
+	},
+	"Define Main": {
+		"prefix": ["main"],
+		"description": "Define the main function and mark it as global.",
+		"body": [
+			"\tglobal main",
+			"",
+			"main:",
+			"\tenter 0, 0",
+			"\t",
+			"\t$0",
+			"\t",
+			"\tleave",
+			"\tret",
+		]
+	},
+	"Define function": {
+		"prefix": ["func"],
+		"description": "Insert a function header.",
+		"body": [
+			"$LINE_COMMENT ${2:void} ${1:my_function}($3)",
+			"$1:",
+			"\tenter 0, 0",
+			"\t",
+			"\t$0",
+			"\t",
+			"\tleave",
+			"\tret",
+		]
+	},
 	"Insert macros": {
 		"prefix": ["helper-macros", "helpers"],
 		"description": "Insert some helper macros.",
