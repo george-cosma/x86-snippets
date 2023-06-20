@@ -2,9 +2,19 @@
   "name": "x86-snippets",
   "displayName": "x86 Snippets",
   "description": "A handful of useful asm x86 32 bit code snippets.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.78.0"
+  },
+  "author": {
+    "name": "Cosma",
+    "url": "https://github.com/george-cosma"
+  },
+  "bugs": {
+    "url": "https://github.com/george-cosma/x86-snippets/issues"
+  },
+  "repository": {
+    "url": "https://github.com/george-cosma/x86-snippets/"
   },
   "categories": [
     "Snippets"
